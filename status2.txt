@@ -1,0 +1,67 @@
+TRY https://inv.nadeko.net/api/v1/captions/XDdnUybHVMg?lang=hi 0 b''
+FAIL https://inv.nadeko.net/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 500: 'Internal Server Error'>
+TRY https://yewtu.be/api/v1/captions/XDdnUybHVMg?lang=hi 11354 b'<!doctype html> <html lang="en">   <head>     <meta charset="utf-8" />     <meta'
+TRY https://yewtu.be/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 11354 b'<!doctype html> <html lang="en">   <head>     <meta charset="utf-8" />     <meta'
+FAIL https://invidious.nerdvpn.de/api/v1/captions/XDdnUybHVMg?lang=hi RemoteDisconnected('Remote end closed connection without response')
+FAIL https://invidious.nerdvpn.de/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 RemoteDisconnected('Remote end closed connection without response')
+FAIL https://inv.tux.pizza/api/v1/captions/XDdnUybHVMg?lang=hi URLError(TimeoutError('timed out'))
+FAIL https://inv.tux.pizza/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(TimeoutError('timed out'))
+FAIL https://invidious.f5.si/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 530: '<none>'>
+FAIL https://invidious.f5.si/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 530: '<none>'>
+FAIL https://iv.melmac.space/api/v1/captions/XDdnUybHVMg?lang=hi URLError(OSError(101, 'Network is unreachable'))
+FAIL https://iv.melmac.space/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(OSError(101, 'Network is unreachable'))
+FAIL https://invidious.jing.rocks/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.jing.rocks/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.materialio.us/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 500: 'Internal Server Error'>
+FAIL https://invidious.materialio.us/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 500: 'Internal Server Error'>
+FAIL https://invidious.privacyredirect.com/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 404: 'Not Found'>
+FAIL https://invidious.privacyredirect.com/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 404: 'Not Found'>
+FAIL https://invidious.lunivers.trade/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 503: 'Service Unavailable'>
+FAIL https://invidious.lunivers.trade/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 503: 'Service Unavailable'>
+FAIL https://yt.artemislena.eu/api/v1/captions/XDdnUybHVMg?lang=hi URLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1000)'))
+FAIL https://yt.artemislena.eu/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1000)'))
+FAIL https://invidious.reallyaweso.me/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 502: 'Bad Gateway'>
+FAIL https://invidious.reallyaweso.me/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 502: 'Bad Gateway'>
+FAIL https://iv.datura.network/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://iv.datura.network/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.perennialte.ch/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 404: 'Not Found'>
+FAIL https://invidious.perennialte.ch/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 404: 'Not Found'>
+FAIL https://invidious.einfachzocken.eu/api/v1/captions/XDdnUybHVMg?lang=hi URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificat
+FAIL https://invidious.einfachzocken.eu/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificat
+FAIL https://invidious.dhusch.de/api/v1/captions/XDdnUybHVMg?lang=hi URLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1000)'))
+FAIL https://invidious.dhusch.de/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1000)'))
+TRY https://invidious.protokolla.fi/api/v1/captions/XDdnUybHVMg?lang=hi 1069 b' <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Auth with'
+TRY https://invidious.protokolla.fi/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 1069 b' <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Auth with'
+FAIL https://invidious.privacydev.net/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.privacydev.net/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.drgns.space/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.drgns.space/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://vid.priv.au/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-5, 'No address associated with hostname'))
+FAIL https://vid.priv.au/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-5, 'No address associated with hostname'))
+FAIL https://invidious.0011.lt/api/v1/captions/XDdnUybHVMg?lang=hi URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://invidious.0011.lt/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(gaierror(-2, 'Name or service not known'))
+FAIL https://iv.ggtyler.dev/api/v1/captions/XDdnUybHVMg?lang=hi URLError(TimeoutError('timed out'))
+FAIL https://iv.ggtyler.dev/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(TimeoutError('timed out'))
+FAIL https://invidious.slipfox.xyz/api/v1/captions/XDdnUybHVMg?lang=hi URLError(TimeoutError('timed out'))
+FAIL https://invidious.slipfox.xyz/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(TimeoutError('timed out'))
+FAIL https://invidious.privacy.gd/api/v1/captions/XDdnUybHVMg?lang=hi URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local is
+FAIL https://invidious.privacy.gd/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 URLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local is
+FAIL https://invidious.nikkosphere.com/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 451: 'Unavailable For Legal Reasons'>
+FAIL https://invidious.nikkosphere.com/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 451: 'Unavailable For Legal Reasons'>
+FAIL https://invidious.ducks.party/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 500: 'Internal Server Error'>
+FAIL https://invidious.ducks.party/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 500: 'Internal Server Error'>
+FAIL https://invidious.moomoo.me/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 522: '<none>'>
+FAIL https://invidious.moomoo.me/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 522: '<none>'>
+FAIL https://invidious.private.coffee/api/v1/captions/XDdnUybHVMg?lang=hi <HTTPError 502: 'Bad Gateway'>
+FAIL https://invidious.private.coffee/api/v1/captions/XDdnUybHVMg?label=Hindi%20%28auto-generated%29 <HTTPError 502: 'Bad Gateway'>
+PIPEDFAIL pipedapi.kavin.rocks <HTTPError 403: 'Forbidden'>
+PIPEDFAIL pipedapi.adminforge.de <HTTPError 403: 'Forbidden'>
+PIPEDFAIL api.piped.private.coffee <HTTPError 500: 'Internal Server Error'>
+PIPEDFAIL pipedapi.drgns.space URLError(gaierror(-2, 'Name or service not known'))
+PIPEDFAIL pipedapi.reallyaweso.me JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+PIPEDFAIL pipedapi.nosebs.ru URLError(gaierror(-2, 'Name or service not known'))
+PIPEDFAIL pipedapi.leptons.xyz <HTTPError 502: 'Bad Gateway'>
+PIPEDFAIL piped-api.lunar.icu <HTTPError 502: 'Bad Gateway'>
+PIPEDFAIL pipedapi.r4fo.com URLError(gaierror(-5, 'No address associated with hostname'))
+PIPEDFAIL pipedapi.ducks.party <HTTPError 500: 'Internal Server Error'>
+RESULT FAILED
