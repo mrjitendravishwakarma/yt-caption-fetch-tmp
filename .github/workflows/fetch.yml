@@ -8,13 +8,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch captions from public frontends
+      - name: yt-dlp attempt
         run: |
-          python3 - <<'PY'
+          exec > status.txt 2>&1
+          pip install -q yt-dlp
+          for c in tv web_safari android_vr mweb ios web; do
+            echo "=== client $c ==="
+            yt-dlp --extractor-args "youtube:player_client=$c" --skip-download --write-auto-subs --write-subs --sub-langs "hi,hi-orig,en" --sub-format vtt -o "cap_%(id)s" "https://www.youtube.com/watch?v=XDdnUybHVMg" 2>&1 | tail -5 || true
+            f=$(ls cap_*.vtt 2>/dev/null | head -1)
+            echo "file: $f"
+            if [ -n "$f" ] && head -1 "$f" | grep -q WEBVTT; then cp "$f" captions_raw.vtt; echo "GOT $f"; break; fi
+            rm -f cap_*.vtt
+          done
+          ls -la
+      - name: invidious attempt
+        if: hashFiles('captions_raw.vtt') == ''
+        run: |
+          python3 - <<'PY' >> status.txt 2>&1
           import urllib.request, urllib.parse, sys
           vid = "XDdnUybHVMg"
-          insts = ["inv.nadeko.net","yewtu.be","invidious.nerdvpn.de","inv.tux.pizza","invidious.f5.si","iv.melmac.space","invidious.jing.rocks","invidious.materialio.us","invidious.privacyredirect.com","invidious.lunivers.trade","yt.artemislena.eu","invidious.reallyaweso.me","iv.datura.network","invidious.perennialte.ch","invidious.einfachzocken.eu","invidious.dhusch.de","invidious.protokolla.fi","invidious.adminforge.de","invidious.privacydev.net","vid.puffyan.us"]
-          hdrs = {"User-Agent": "Mozilla/5.0"}
+          insts = ["inv.nadeko.net","yewtu.be","invidious.nerdvpn.de","inv.tux.pizza","invidious.f5.si","iv.melmac.space","invidious.jing.rocks","invidious.materialio.us","invidious.privacyredirect.com","invidious.lunivers.trade","yt.artemislena.eu","invidious.reallyaweso.me","iv.datura.network","invidious.perennialte.ch","invidious.einfachzocken.eu","invidious.dhusch.de","invidious.protokolla.fi","invidious.privacydev.net"]
+          hdrs = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"}
           got = False
           for inst in insts:
               urls = ["https://%s/api/v1/captions/%s?label=%s" % (inst, vid, urllib.parse.quote("Hindi (auto-generated)")),
@@ -23,31 +37,21 @@ jobs:
                   try:
                       req = urllib.request.Request(url, headers=hdrs)
                       data = urllib.request.urlopen(req, timeout=30).read()
-                      if len(data) > 1000:
+                      print("got", inst, len(data), b"WEBVTT" in data[:200])
+                      if b"WEBVTT" in data[:500] and len(data) > 1000:
                           open("captions_raw.vtt", "wb").write(data)
-                          print("OK", inst, len(data))
                           got = True
                           break
-                      print("short", inst, len(data))
                   except Exception as e:
-                      print("fail", inst, repr(e)[:120])
+                      print("fail", inst, repr(e)[:150])
               if got:
                   break
-          if not got:
-              sys.exit(1)
+          print("SUCCESS" if got else "ALLFAILED")
           PY
-      - name: yt-dlp fallback
-        if: hashFiles('captions_raw.vtt') == ''
-        run: |
-          pip install -q yt-dlp
-          yt-dlp --skip-download --write-auto-subs --write-subs --sub-langs "hi,en" --sub-format vtt -o "cap_%(id)s" "https://www.youtube.com/watch?v=XDdnUybHVMg" || true
-          ls -la
-          for f in cap_*.vtt; do if [ -f "$f" ]; then cp "$f" captions_raw.vtt; break; fi; done
-          test -f captions_raw.vtt
-      - name: Commit result
+      - name: Commit
         run: |
           git config user.name "caption-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add captions_raw.vtt
-          git commit -m "add captions"
-          git push
+          git add -A
+          git commit -m "fetch attempt $(date -u +%H%M%S)" || true
+          git push || true
