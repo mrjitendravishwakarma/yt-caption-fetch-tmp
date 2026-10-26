@@ -1,0 +1,53 @@
+name: fetch-captions
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch captions from public frontends
+        run: |
+          python3 - <<'PY'
+          import urllib.request, urllib.parse, sys
+          vid = "XDdnUybHVMg"
+          insts = ["inv.nadeko.net","yewtu.be","invidious.nerdvpn.de","inv.tux.pizza","invidious.f5.si","iv.melmac.space","invidious.jing.rocks","invidious.materialio.us","invidious.privacyredirect.com","invidious.lunivers.trade","yt.artemislena.eu","invidious.reallyaweso.me","iv.datura.network","invidious.perennialte.ch","invidious.einfachzocken.eu","invidious.dhusch.de","invidious.protokolla.fi","invidious.adminforge.de","invidious.privacydev.net","vid.puffyan.us"]
+          hdrs = {"User-Agent": "Mozilla/5.0"}
+          got = False
+          for inst in insts:
+              urls = ["https://%s/api/v1/captions/%s?label=%s" % (inst, vid, urllib.parse.quote("Hindi (auto-generated)")),
+                      "https://%s/api/v1/captions/%s?lang=hi" % (inst, vid)]
+              for url in urls:
+                  try:
+                      req = urllib.request.Request(url, headers=hdrs)
+                      data = urllib.request.urlopen(req, timeout=30).read()
+                      if len(data) > 1000:
+                          open("captions_raw.vtt", "wb").write(data)
+                          print("OK", inst, len(data))
+                          got = True
+                          break
+                      print("short", inst, len(data))
+                  except Exception as e:
+                      print("fail", inst, repr(e)[:120])
+              if got:
+                  break
+          if not got:
+              sys.exit(1)
+          PY
+      - name: yt-dlp fallback
+        if: hashFiles('captions_raw.vtt') == ''
+        run: |
+          pip install -q yt-dlp
+          yt-dlp --skip-download --write-auto-subs --write-subs --sub-langs "hi,en" --sub-format vtt -o "cap_%(id)s" "https://www.youtube.com/watch?v=XDdnUybHVMg" || true
+          ls -la
+          for f in cap_*.vtt; do if [ -f "$f" ]; then cp "$f" captions_raw.vtt; break; fi; done
+          test -f captions_raw.vtt
+      - name: Commit result
+        run: |
+          git config user.name "caption-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add captions_raw.vtt
+          git commit -m "add captions"
+          git push
